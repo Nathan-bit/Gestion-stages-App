@@ -1,55 +1,74 @@
 
-import { Image, StyleSheet, Platform ,ScrollView ,Text,View ,ImageBackground ,Button ,Pressable ,Modal ,StatusBar , ActivityIndicator , Alert} from 'react-native';
-import { useState } from 'react';
+import { Image, StyleSheet,SafeAreaView , FlatList ,ScrollView ,Text,View ,SectionList ,Button ,Pressable ,Modal ,StatusBar , ActivityIndicator , Alert} from 'react-native';
+import pokemonList from '../../data.json'
+import gdata from '../../gdata.json'
 
 
 
 export default function HomeScreen() {
-  const [modalVisible, setModalVisible] = useState(false);
+ 
   return (
 
-    <View style={{flex:1 ,backgroundColor:"plum" , width:'auto' , height:'auto'}}>
-      <StatusBar backgroundColor="plum" barStyle="light-content"  />
-  
-
-<ScrollView >
-  <Pressable onPress={()=>console.log('image pressed')}>
-    <Image
-        source={{ uri: 'https://fastly.picsum.photos/id/122/3888/2592.jpg?hmac=xkROmdWG_MzDmpTM2MTawXrpURb60jcTqzkxatKBbOk' }}
-        style={styles.image}
-      /></Pressable>
+    <SafeAreaView  style={styles.container}> 
+      <StatusBar backgroundColor="black" barStyle="light-content"  />
 
 
+ 
+{/*       <ScrollView  style={styles.srollview}>
 
-   <Pressable>
+     {
+      pokemonList.map(pokemon =>{
+        return (
+          <View  style={styles.card} key={pokemon.id}>
+            <Text style={styles.cardText}> {pokemon.type}</Text>
+            <Text  style={styles.cardText}> {pokemon.name}</Text>
+          </View>
+        )
 
+      } )
+     }
 
-   <Text style={{flex:1 , padding:40}}> Amet velit exercitation dolore veniam ullamco elit in ipsum officia quis minim ut magna pariatur. Sunt pariatur sit commodo laborum cillum pariatur excepteur. Laborum aute incididunt aute adipisicing non qui elit. Excepteur elit id aliquip reprehenderit elit duis id voluptate laborum. Aliqua anim sint eiusmod culpa est sint laborum consequat.
-    Amet velit exercitation dolore veniam ullamco elit in ipsum officia quis minim ut magna pariatur. Sunt pariatur sit commodo laborum cillum pariatur excepteur. Laborum aute incididunt aute adipisicing non qui elit. Excepteur elit id aliquip reprehenderit elit duis id voluptate laborum. Aliqua anim sint eiusmod culpa est sint laborum consequat.Amet velit exercitation dolore veniam ullamco elit in ipsum officia quis minim ut magna pariatur. Sunt pariatur sit commodo laborum cillum pariatur excepteur. Laborum aute incididunt aute adipisicing non qui elit duis id voluptate laborum. Aliqua anim sint eiusmod culpa est sint laborum consequat.Amet velit exercitation dolore veniam ullamco elit in ipsum officia quis minim ut magna pariatur. Sunt pariatur sit commodo laborum cillum pariatur excepteur. Laborum aute incididunt aute 
-    
-    adipisicing non qui elit. Excepteur elit id aliquip reprehenderit elit duis id voluptate laborum. Aliqua anim sint eiusmod culpa est sint laborum consequat.Amet velit exercitation dolore veniam ullamco elit inrit elit duis id voluptate laborum. Aliqua anim sint eiusmod culpa est sint laborum consequat.Amet velit exercitation dolore veniam ullamco elit in ipsum officia quis minim ut magna pariatur. Sunt pariatur sit commodo laborum cillum pariatur excepteur. Laborum aute incididunt aute adipisicing non qui elit. Excepteur elit id aliquip 
-.</Text>
-   </Pressable>
-
-
-            <Modal visible={modalVisible} onRequestClose={()=>setModalVisible(false)}
-             animationType='slide'
-             presentationStyle='pageSheet'>
-                <View style={{flex:1 ,backgroundColor:"beige" ,padding :20 ,width:'auto' , height:'auto' }}>
-                  <Text>Modal Sample</Text>
-                  <Text>prehenderit elit duis id voluptate laborum. Aliqua anim sint eiusmod culpa est sint laborum consequat.
-    Amet velit exercitation dolore veniam ullamco elit in ipsum officia quis minim ut magna pariatur. Sunt pariatur sit commodo laborum cillum pariatur excepteur. Laborum aute incididunt aute adipisicing non qui elit. Excepteur elit id aliquip reprehenderit elit duis id voluptate laborum. Aliqua anim sint eiusmod culpa est sint laborum consequat.Amet velit exercitation dolore veniam ullamco elit in ipsum officia quis minim ut magna pariatur. Sunt pariatur sit commodo laborum cillum pariatur excepteur. Laborum aute incididunt aute adipisicing non qui elit duis id voluptate laborum. Aliqua anim sint eiusmod culpa est sint laborum consequat.Amet velit exercitation dolore veniam ullamco elit in ipsum officia quis minim ut magna pariatur. Sunt pariatur sit commodo laborum cillum pariatur excepteur. Laborum aute incididunt aute 
-    
-    adipisicing non qui elit. Excepteur elit id aliquip reprehenderit elit duis id voluptate laborum. Aliqua anim sint eiusmod culpa est sint laborum consequat.Amet velit exercitation dolore veniam ullamco elit inrit elit duis id voluptate laborum. Aliqua anim sint eiusmod culpa est sint laborum consequat.Amet velit exercitation dolore veniam ullamco elit in ipsum officia quis minim ut magna pariatur. Sunt pariatur sit commodo laborum cillum pariatur excepteur. Laborum aute incididunt aute adipisicing non qui elit. Excepteur elit id aliquip </Text>
-                  <Button title="close" onPress={()=>setModalVisible(false)}></Button>
-
-               </View>
-             </Modal> 
-               <Button title='Postuler' onPress={()=>setModalVisible(true)}  ></Button>
-</ScrollView>
+</ScrollView>        
+            */
+ /*            
+<FlatList
+  data={pokemonList}
+  renderItem={({item}) => {
+ 
+     return (
+      <View  style={styles.card} key={item.id}>
+        <Text style={styles.cardText}> {item.type}</Text>
+        <Text  style={styles.cardText}> {item.name}</Text>
       </View>
+    )
 
-               
+  }}
+  keyExtractor={(item , indew) => item.id.toString()}
+  ListEmptyComponent={<Text>No items Found</Text>}
+  ListHeaderComponent={<Text style={styles.headerText}>List Pokemon</Text>}
+  ListFooterComponent={<Text style={styles.headerText}>End</Text>}
+/> */
+
+<SectionList
+  sections={gdata}
+  renderItem={({item}) => {
+    return (
+      <View style={styles.card}>
+        <Text style={styles.cardText}>{item}</Text>
+      </View>
+    );
+  }}
+  renderSectionHeader={({section}) => (
+    <Text style={styles.sectionHeader}>{section.type}</Text>
+  )}
+/>
+
+       
+            }
+
+      </SafeAreaView>
+
+  
 
   );
 }
@@ -57,20 +76,42 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor:'#f5f5f5',  
+
+    backgroundColor:'#fff',  
+    paddingTop : StatusBar.currentHeight,
   },
-  text: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  srollview :{
+    paddingHorizontal:16,
+    paddingTop:16,
+    paddingBottom:16
   },
-  image: {
-    width: 300,
-    height: 200,
-    margin:60
-  
-   
+  card: {
+    backgroundColor: '#fff',
+    padding: 10,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
   },
+  cardText: {
+    fontSize:18,
+    color: '#333',
+  },
+  headerText :
+  {
+    fontSize:22,
+    textAlign:'center',
+    fontWeight:'bold',
+    color:'#333',
+    marginBottom :15
+  },
+  sectionHeader :{
+    backgroundColor:'white',
+    fontSize:22,
+    fontWeight:'bold'
+  }
 });

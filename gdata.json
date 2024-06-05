@@ -1,0 +1,62 @@
+[
+    {
+        "type": "Grass",
+        "data": ["Bulbasaur", "Ivysaur", "Venusaur"]
+    },
+    {
+        "type": "Fire",
+        "data": ["Charmander", "Charmeleon", "Charizard"]
+    },
+    {
+        "type": "Water",
+        "data": ["Squirtle", "Wartortle", "Blastoise"]
+    },
+    {
+        "type": "Electric",
+        "data": ["Pikachu", "Raichu"]
+    },
+    {
+        "type": "Psychic",
+        "data": ["Abra", "Kadabra", "Alakazam"]
+    },
+    {
+        "type": "Rock",
+        "data": ["Geodude", "Graveler", "Golem"]
+    },
+    {
+        "type": "Ground",
+        "data": ["Sandshrew", "Sandslash"]
+    },
+    {
+        "type": "Ice",
+        "data": ["Seel", "Dewgong"]
+    },
+    {
+        "type": "Dragon",
+        "data": ["Dratini", "Dragonair", "Dragonite"]
+    },
+    {
+        "type": "Ghost",
+        "data": ["Gastly", "Haunter", "Gengar"]
+    },
+    {
+        "type": "Fairy",
+        "data": ["Clefairy", "Clefable"]
+    },
+    {
+        "type": "Dark",
+        "data": ["Murkrow", "Honchkrow"]
+    },
+    {
+        "type": "Steel",
+        "data": ["Magnemite", "Magneton", "Magnezone"]
+    },
+    {
+        "type": "Fighting",
+        "data": ["Machop", "Machoke", "Machamp"]
+    },
+    {
+        "type": "Bug",
+        "data": ["Caterpie", "Metapod", "Butterfree"]
+    }
+]
